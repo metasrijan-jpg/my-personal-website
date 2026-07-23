@@ -1,0 +1,10 @@
+<svg width="620" height="720" viewBox="0 0 620 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="620" height="720" rx="24" fill="#F8F5EF"/>
+  <rect x="54" y="54" width="512" height="612" rx="22" fill="#15130F"/>
+  <circle cx="310" cy="230" r="92" fill="#E9DFCC"/>
+  <path d="M150 606C168 470 237 384 310 384C383 384 452 470 470 606H150Z" fill="#E9DFCC"/>
+  <path d="M176 132C246 86 376 86 444 132" stroke="#B8893B" stroke-width="8" stroke-linecap="round"/>
+  <path d="M132 518C204 456 256 522 316 466C374 412 434 456 488 398" stroke="#4EA8FF" stroke-width="8" stroke-linecap="round"/>
+  <text x="310" y="642" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#F8F5EF">Srijan Gharti</text>
+  <text x="310" y="676" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#F8F5EF" fill-opacity=".7">Professional photo placeholder</text>
+</svg>
