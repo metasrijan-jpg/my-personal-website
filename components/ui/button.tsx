@@ -3,9 +3,9 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "reac
 import { cn } from "@/lib/utils";
 
 const variants = {
-  primary: "bg-ink text-white shadow-soft hover:-translate-y-0.5 hover:bg-black",
-  secondary: "border border-ink/15 bg-white/75 text-ink hover:-translate-y-0.5 hover:border-gold/60",
-  gold: "bg-gold text-white shadow-soft hover:-translate-y-0.5 hover:bg-[#A5772D]"
+  primary: "bg-ink text-white shadow-soft hover:-translate-y-0.5 hover:bg-[#0f0e0b]",
+  secondary: "border border-ink/15 bg-white/78 text-ink hover:-translate-y-0.5 hover:border-gold/60 hover:bg-white",
+  gold: "bg-gold text-white shadow-soft hover:-translate-y-0.5 hover:bg-[#97703d]"
 };
 
 type BaseProps = {

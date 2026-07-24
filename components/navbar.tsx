@@ -21,17 +21,19 @@ export function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-ink/10 bg-cream/82 backdrop-blur-xl">
-      <nav className="container flex h-28 items-center justify-between">
+    <header className="sticky top-0 z-50 border-b border-ink/10 bg-cream/84 backdrop-blur-xl">
+      <nav className="container flex h-24 items-center justify-between">
         <Link href="/" className="focus-ring flex items-center rounded-full">
-          <Image
-            src="/1-removebg-preview.png"
-            alt="Meta Srijan"
-            width={340}
-            height={136}
-            priority
-            className="h-24 w-auto max-w-[250px] object-contain sm:max-w-[340px]"
-          />
+          <span className="relative block h-12 w-[190px] overflow-hidden sm:h-14 sm:w-[230px]">
+            <Image
+              src="/1-removebg-preview.png"
+              alt="Meta Srijan"
+              fill
+              priority
+              sizes="(max-width: 640px) 190px, 230px"
+              className="object-cover object-[18%_72%]"
+            />
+          </span>
         </Link>
         <div className="hidden items-center gap-8 lg:flex">
           {links.map((link) => (
@@ -60,7 +62,7 @@ export function Navbar() {
       </nav>
       <div
         className={cn(
-          "grid border-t border-ink/10 bg-cream/95 transition-all duration-300 lg:hidden",
+          "grid border-t border-ink/10 bg-cream/96 transition-all duration-300 lg:hidden",
           open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         )}
       >

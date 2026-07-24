@@ -4,12 +4,12 @@
 
 :root {
   color-scheme: light;
-  --cream: #f8f5ef;
-  --ink: #15130f;
-  --muted: #716b60;
-  --gold: #b8893b;
-  --beige: #e9dfcc;
-  --ai: #4ea8ff;
+  --cream: #f6f1e8;
+  --ink: #1b1813;
+  --muted: #6e675a;
+  --gold: #a98248;
+  --beige: #e6d9c4;
+  --ai: #8a9a86;
 }
 
 * {
@@ -23,9 +23,9 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 12% 10%, rgba(78, 168, 255, 0.16), transparent 28rem),
-    radial-gradient(circle at 88% 4%, rgba(184, 137, 59, 0.16), transparent 26rem),
-    linear-gradient(180deg, #f8f5ef 0%, #fffaf1 48%, #f8f5ef 100%);
+    radial-gradient(circle at 14% 10%, rgba(138, 154, 134, 0.16), transparent 28rem),
+    radial-gradient(circle at 86% 4%, rgba(169, 130, 72, 0.18), transparent 26rem),
+    linear-gradient(180deg, #f6f1e8 0%, #fcf8f1 48%, #f4eee4 100%);
   color: var(--ink);
   font-family: var(--font-inter), sans-serif;
 }
@@ -43,7 +43,7 @@ textarea {
 }
 
 ::selection {
-  background: rgba(184, 137, 59, 0.28);
+  background: rgba(169, 130, 72, 0.24);
 }
 
 .container {
@@ -56,27 +56,27 @@ textarea {
 }
 
 .premium-card {
-  border: 1px solid rgba(21, 19, 15, 0.09);
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: 0 22px 60px rgba(21, 19, 15, 0.08);
-  backdrop-filter: blur(16px);
+  border: 1px solid rgba(27, 24, 19, 0.08);
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: 0 22px 60px rgba(27, 24, 19, 0.08);
+  backdrop-filter: blur(18px);
 }
 
 .ai-grid {
   background-image:
-    linear-gradient(rgba(21, 19, 15, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(21, 19, 15, 0.045) 1px, transparent 1px);
+    linear-gradient(rgba(27, 24, 19, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27, 24, 19, 0.04) 1px, transparent 1px);
   background-size: 34px 34px;
 }
 
 .focus-ring:focus-visible {
-  outline: 3px solid rgba(78, 168, 255, 0.55);
+  outline: 3px solid rgba(169, 130, 72, 0.45);
   outline-offset: 3px;
 }
 
 .input {
   width: 100%;
-  border: 1px solid rgba(21, 19, 15, 0.14);
+  border: 1px solid rgba(27, 24, 19, 0.14);
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.82);
   padding: 0.86rem 0.95rem;
@@ -86,8 +86,8 @@ textarea {
 
 .input:focus {
   outline: none;
-  border-color: rgba(78, 168, 255, 0.72);
-  box-shadow: 0 0 0 4px rgba(78, 168, 255, 0.16);
+  border-color: rgba(169, 130, 72, 0.72);
+  box-shadow: 0 0 0 4px rgba(169, 130, 72, 0.14);
   background: #fff;
 }
 
