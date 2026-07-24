@@ -31,8 +31,17 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={0.12} className="relative">
             <div className="absolute -inset-6 rounded-full bg-ai/10 blur-3xl" />
-            <div className="premium-card relative overflow-hidden rounded-[8px] p-3">
-              <Image src="/images/hero-ai.svg" alt="AI marketing strategy dashboard illustration" width={760} height={620} priority className="h-auto w-full" />
+            <div className="mx-auto flex max-w-[620px] justify-center">
+              <div className="premium-card relative aspect-square w-full max-w-[520px] overflow-hidden rounded-full border-8 border-white/70 bg-[#0f0e0b] p-0 shadow-soft">
+                <Image
+                  src="/images/srijan-gharti.png"
+                  alt="Portrait of Srijan Gharti"
+                  width={720}
+                  height={720}
+                  priority
+                  className="h-full w-full object-cover object-center"
+                />
+              </div>
             </div>
           </Reveal>
         </div>
@@ -49,8 +58,16 @@ export default function HomePage() {
       <section className="section">
         <div className="container grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal>
-            <div className="premium-card aspect-[4/5] overflow-hidden rounded-[8px] p-4">
-              <Image src="/images/profile-placeholder.svg" alt="Professional portrait placeholder for Srijan Gharti" width={560} height={680} className="h-full w-full object-cover" />
+            <div className="mx-auto flex max-w-[520px] justify-center">
+              <div className="premium-card relative aspect-square w-full overflow-hidden rounded-full border-8 border-white/70 bg-[#0f0e0b] shadow-soft">
+                <Image
+                  src="/images/srijan-gharti.png"
+                  alt="Portrait of Srijan Gharti"
+                  width={720}
+                  height={720}
+                  className="h-full w-full object-cover object-center"
+                />
+              </div>
             </div>
           </Reveal>
           <Reveal delay={0.08}>

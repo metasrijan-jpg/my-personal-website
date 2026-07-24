@@ -26,7 +26,17 @@ export default function AboutPage() {
             <LinkButton href="/contact" variant="gold" className="mt-8">Book a Consultation</LinkButton>
           </Reveal>
           <Reveal delay={0.08}>
-            <Image src="/images/profile-placeholder.svg" alt="Srijan Gharti professional placeholder" width={620} height={720} className="premium-card rounded-[8px] p-3" />
+            <div className="mx-auto flex max-w-[560px] justify-center">
+              <div className="premium-card relative aspect-square w-full overflow-hidden rounded-full border-8 border-white/70 bg-[#0f0e0b] shadow-soft">
+                <Image
+                  src="/images/srijan-gharti.png"
+                  alt="Portrait of Srijan Gharti"
+                  width={720}
+                  height={720}
+                  className="h-full w-full object-cover object-center"
+                />
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>
