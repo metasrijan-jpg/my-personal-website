@@ -1,9 +1,10 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckCircle2, Loader2, Send } from "lucide-react";
+import { Loader2, Send } from "lucide-react";
 import type { ReactNode } from "react";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { serviceOptions } from "@/lib/data";
 import { contactSchema, type ContactFormInput } from "@/lib/validation";
@@ -12,6 +13,7 @@ import { Button } from "@/components/ui/button";
 const budgets = ["Under $500", "$500 - $1,500", "$1,500 - $5,000", "$5,000+"];
 
 export function ContactForm() {
+  const router = useRouter();
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
   const {
     register,
@@ -35,8 +37,8 @@ export function ContactForm() {
       return;
     }
 
-    setStatus("success");
     reset();
+    router.push("/thank-you");
   }
 
   return (
@@ -88,11 +90,6 @@ export function ContactForm() {
         {isSubmitting ? <Loader2 className="animate-spin" size={18} /> : <Send size={18} />}
         Submit Inquiry
       </Button>
-      {status === "success" ? (
-        <p className="mt-5 flex items-center gap-2 rounded-[8px] bg-emerald-50 p-4 text-sm font-semibold text-emerald-700">
-          <CheckCircle2 size={18} /> Thank you. Your request has been received.
-        </p>
-      ) : null}
       {status === "error" ? <p className="mt-5 rounded-[8px] bg-red-50 p-4 text-sm font-semibold text-red-700">Something went wrong. Please try again.</p> : null}
     </form>
   );

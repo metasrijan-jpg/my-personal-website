@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
-import { ContactForm } from "@/components/contact-form";
+import { FlodeskForm } from "@/components/flodesk-form";
 import { FAQ } from "@/components/faq";
 import { Reveal } from "@/components/motion";
 import { SectionHeading } from "@/components/section-heading";
@@ -27,7 +27,9 @@ export default function ContactPage() {
       </section>
       <section className="section">
         <div className="container grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-          <ContactForm />
+          <div className="premium-card overflow-hidden rounded-[8px] p-2 sm:p-4">
+            <FlodeskForm />
+          </div>
           <div className="space-y-5">
             <Reveal className="premium-card rounded-[8px] p-7">
               <h2 className="font-heading text-2xl font-bold">Contact Information</h2>
