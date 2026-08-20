@@ -14,6 +14,22 @@ export function FlodeskForm() {
       if (cancelled || !rootRef.current) return;
 
       rootRef.current.innerHTML = html;
+
+      const configElement = rootRef.current.querySelector<HTMLElement>("[data-ff-el=\"config\"]");
+      const encodedConfig = configElement?.getAttribute("data-ff-config");
+      if (configElement && encodedConfig) {
+        try {
+          const config = JSON.parse(window.atob(encodedConfig));
+          config.onSuccess = {
+            ...config.onSuccess,
+            redirectUrl: `${window.location.origin}/thank-you`
+          };
+          configElement.setAttribute("data-ff-config", window.btoa(JSON.stringify(config)));
+        } catch {
+          // Keep Flodesk's original configuration if it cannot be decoded.
+        }
+      }
+
       const scripts = Array.from(rootRef.current.querySelectorAll("script"));
       scripts.forEach((script) => {
         const replacement = document.createElement("script");

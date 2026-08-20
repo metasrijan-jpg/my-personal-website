@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { CheckCircle2, ArrowRight, MessageCircle, Phone } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Thank You",
   description: "Your consultation request has been received.",
   robots: { index: false, follow: false }
 };
+
+const whatsappNumber = "9779851401711";
+const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hello, I just submitted an inquiry through your website.")}`;
+const phoneLink = "tel:+9779851401711";
 
 export default function ThankYouPage() {
   return (
@@ -19,9 +23,17 @@ export default function ThankYouPage() {
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-muted">
             Your request is safely with us. We’ll review your goals and get back to you with the next step shortly.
           </p>
-          <Link href="/" className="button-primary mt-9 inline-flex items-center gap-2">
-            Return home <ArrowRight size={18} />
-          </Link>
+          <div className="mt-9 flex flex-wrap justify-center gap-3">
+            <Link href="/" className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 font-semibold text-white transition hover:bg-gold">
+              Return home <ArrowRight size={18} />
+            </Link>
+            <a href={whatsappLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 font-semibold text-ink transition hover:border-gold hover:text-gold">
+              WhatsApp us <MessageCircle size={18} />
+            </a>
+            <a href={phoneLink} className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-5 py-3 font-semibold text-ink transition hover:border-gold hover:text-gold">
+              Call us <Phone size={18} />
+            </a>
+          </div>
         </div>
       </div>
     </section>

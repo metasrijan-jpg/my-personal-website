@@ -7,7 +7,7 @@ export default function FlodeskSuccessPage() {
   const router = useRouter();
 
   useEffect(() => {
-    const timeout = window.setTimeout(() => router.replace("/thanks"), 1800);
+    const timeout = window.setTimeout(() => router.replace("/thank-you"), 1800);
     return () => window.clearTimeout(timeout);
   }, [router]);
 
