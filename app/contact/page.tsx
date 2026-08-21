@@ -41,6 +41,27 @@ export default function ContactPage() {
               </div>
             </Reveal>
             <Reveal className="premium-card overflow-hidden rounded-[8px]">
+              <div className="border-b border-ink/10 p-7">
+                <h2 className="font-heading text-2xl font-bold">Schedule a consultation</h2>
+                <p className="mt-3 leading-7 text-muted">Choose a convenient time directly from the calendar below.</p>
+              </div>
+              <iframe
+                src="https://calendly.com/metasrijan/new-meeting?hide_gdpr_banner=1"
+                title="Schedule a consultation with MetaSrijan"
+                className="h-[720px] w-full"
+              />
+              <div className="border-t border-ink/10 p-5 text-center">
+                <a
+                  href="https://calendly.com/metasrijan/new-meeting"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="font-semibold text-gold underline underline-offset-4 hover:text-ink"
+                >
+                  Open Calendly in a new tab
+                </a>
+              </div>
+            </Reveal>
+            <Reveal className="premium-card overflow-hidden rounded-[8px]">
               <div className="grid min-h-72 place-items-center bg-[linear-gradient(135deg,#15130F,#2D2A22)] p-8 text-center text-white">
                 <div>
                   <MapPin className="mx-auto mb-4 text-gold" size={34} />
