@@ -42,7 +42,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="premium-card rounded-[8px] p-6 sm:p-8">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Full Name" error={errors.fullName?.message}>
           <input {...register("fullName")} className="input" placeholder="Your name" />
