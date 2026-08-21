@@ -91,6 +91,90 @@ textarea {
   background: #fff;
 }
 
+.flodesk-shell [data-ff-el="root"] {
+  width: 100% !important;
+  max-width: none !important;
+  background: transparent !important;
+}
+
+.flodesk-shell [data-ff-el="form"] {
+  width: 100% !important;
+  max-width: none !important;
+  padding: 0 !important;
+}
+
+.flodesk-shell [data-ff-el="title"],
+.flodesk-shell [data-ff-el="subtitle"] {
+  display: none !important;
+}
+
+.flodesk-shell [data-ff-el="fields"] {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem !important;
+}
+
+.flodesk-shell .fd-form-group {
+  margin: 0 !important;
+}
+
+.flodesk-shell .fd-form-control {
+  min-height: 3.25rem !important;
+  border: 1px solid rgba(27, 24, 19, 0.14) !important;
+  border-radius: 0.75rem !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  padding: 0.9rem 1rem !important;
+  color: var(--ink) !important;
+  font: inherit !important;
+}
+
+.flodesk-shell .fd-form-control:focus {
+  border-color: rgba(169, 130, 72, 0.72) !important;
+  box-shadow: 0 0 0 4px rgba(169, 130, 72, 0.14) !important;
+  outline: none !important;
+}
+
+.flodesk-shell .fd-form-label {
+  color: var(--ink) !important;
+  font-size: 0.78rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+}
+
+.flodesk-shell [data-ff-el="footer"] {
+  margin-top: 1.25rem !important;
+}
+
+.flodesk-shell [data-ff-el="submit"] {
+  min-height: 3.25rem !important;
+  width: 100% !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: var(--gold) !important;
+  color: white !important;
+  font: inherit !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.02em !important;
+  transition: transform 180ms ease, background 180ms ease !important;
+}
+
+.flodesk-shell [data-ff-el="submit"]:hover {
+  background: #97703d !important;
+  transform: translateY(-1px);
+}
+
+.flodesk-shell .fd-form-success {
+  padding: 2rem 1rem !important;
+  color: var(--ink) !important;
+  text-align: center !important;
+}
+
+@media (max-width: 640px) {
+  .flodesk-shell [data-ff-el="fields"] {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 760px) {
   .section {
     padding: 68px 0;

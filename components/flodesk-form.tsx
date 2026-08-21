@@ -53,5 +53,5 @@ export function FlodeskForm() {
     };
   }, [router]);
 
-  return <div ref={rootRef} className="w-full overflow-hidden" aria-live="polite" />;
+  return <div ref={rootRef} className="flodesk-shell w-full overflow-hidden" aria-live="polite" />;
 }
