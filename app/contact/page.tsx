@@ -22,34 +22,16 @@ export default function ContactPage() {
     <>
       <section className="section border-b border-ink/10">
         <div className="container">
-          <SectionHeading eyebrow="Contact" title="Book your AI marketing consultation" text="Share your goals, current bottlenecks, and preferred consultation details. I will review your request and respond with the next step." />
+          <SectionHeading eyebrow="Contact" title="Start a conversation" text="Share your goals and current bottlenecks through the form. Flodesk will receive your details and handle the follow-up email sequence." />
         </div>
       </section>
       <section className="section">
         <div className="container">
-          <div className="grid items-start gap-8 lg:grid-cols-[0.92fr_1.08fr]">
-            <Reveal className="premium-card overflow-hidden rounded-[18px]">
-              <div className="bg-ink p-7 text-white sm:p-9">
-                <p className="text-sm font-bold uppercase tracking-[0.2em] text-gold">Fastest route</p>
-                <h2 className="mt-3 font-heading text-3xl font-bold">Book a focused consultation</h2>
-                <p className="mt-4 leading-7 text-white/70">Pick a time that works for you. Calendly will confirm the meeting and send the details automatically.</p>
-              </div>
-              <div className="bg-white p-2 sm:p-3">
-                <iframe
-                  src="https://calendly.com/metasrijan/new-meeting?hide_gdpr_banner=1"
-                  title="Schedule a consultation with MetaSrijan"
-                  className="h-[680px] w-full rounded-[12px]"
-                />
-              </div>
-              <div className="border-t border-ink/10 p-5 text-center text-sm text-muted">
-                Calendar not loading? <a href="https://calendly.com/metasrijan/new-meeting" target="_blank" rel="noreferrer" className="font-semibold text-gold underline underline-offset-4">Open Calendly</a>
-              </div>
-            </Reveal>
-
+          <div className="mx-auto max-w-4xl">
             <Reveal className="premium-card rounded-[18px] p-7 sm:p-9">
               <p className="text-sm font-bold uppercase tracking-[0.2em] text-gold">Prefer to start in writing?</p>
-              <h2 className="mt-3 font-heading text-3xl font-bold">Send an inquiry</h2>
-              <p className="mt-4 leading-7 text-muted">Share your details and goals through the secure Flodesk form. I will review your inquiry and follow up with the next step.</p>
+              <h2 className="mt-3 font-heading text-3xl font-bold">Send your inquiry</h2>
+              <p className="mt-4 leading-7 text-muted">Complete the form below. Your details will go directly to Flodesk, where your confirmation and follow-up emails can be managed.</p>
               <div className="mt-7 rounded-[12px] bg-cream/70 p-3 sm:p-5"><FlodeskForm /></div>
             </Reveal>
           </div>
