@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
-import { ContactForm } from "@/components/contact-form";
 import { FlodeskForm } from "@/components/flodesk-form";
 import { FAQ } from "@/components/faq";
 import { Reveal } from "@/components/motion";
@@ -50,8 +49,8 @@ export default function ContactPage() {
             <Reveal className="premium-card rounded-[18px] p-7 sm:p-9">
               <p className="text-sm font-bold uppercase tracking-[0.2em] text-gold">Prefer to start in writing?</p>
               <h2 className="mt-3 font-heading text-3xl font-bold">Send an inquiry</h2>
-              <p className="mt-4 leading-7 text-muted">Tell me what you are working on and I will reply with the most useful next step.</p>
-              <div className="mt-7"><ContactForm /></div>
+              <p className="mt-4 leading-7 text-muted">Share your details and goals through the secure Flodesk form. I will review your inquiry and follow up with the next step.</p>
+              <div className="mt-7 rounded-[12px] bg-cream/70 p-3 sm:p-5"><FlodeskForm /></div>
             </Reveal>
           </div>
 
@@ -75,17 +74,6 @@ export default function ContactPage() {
               </div>
             </Reveal>
           </div>
-
-          <Reveal className="premium-card mt-8 overflow-hidden rounded-[18px]">
-            <div className="grid gap-6 p-7 sm:p-9 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
-              <div>
-                <p className="text-sm font-bold uppercase tracking-[0.2em] text-gold">Stay connected</p>
-                <h2 className="mt-3 font-heading text-2xl font-bold">Get practical marketing ideas</h2>
-                <p className="mt-3 leading-7 text-muted">Join the Flodesk list for occasional insights on AI, growth, and better systems.</p>
-              </div>
-              <div className="rounded-[12px] bg-cream/70 p-3 sm:p-5"><FlodeskForm /></div>
-            </div>
-          </Reveal>
 
           <Reveal className="mt-8">
             <FAQ items={faqs} />
