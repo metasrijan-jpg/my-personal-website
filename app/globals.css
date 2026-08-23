@@ -55,6 +55,11 @@ textarea {
   padding: 96px 0;
 }
 
+.contact-form-section {
+  padding-top: 64px;
+  padding-bottom: 72px;
+}
+
 .premium-card {
   border: 1px solid rgba(27, 24, 19, 0.08);
   background: rgba(255, 255, 255, 0.74);
@@ -100,7 +105,17 @@ textarea {
 .flodesk-shell [data-ff-el="form"] {
   width: 100% !important;
   max-width: none !important;
-  padding: 0 !important;
+  padding: 0.25rem !important;
+  font-size: 0.95rem !important;
+}
+
+.flodesk-shell .ff-6a81bccfe49e79b44f8c2ee4__container {
+  max-width: none !important;
+  background: transparent !important;
+}
+
+.flodesk-shell .ff-6a81bccfe49e79b44f8c2ee4__field {
+  min-width: 0;
 }
 
 .flodesk-shell [data-ff-el="title"],
@@ -111,7 +126,7 @@ textarea {
 .flodesk-shell [data-ff-el="fields"] {
   display: grid !important;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem !important;
+  gap: 0.75rem !important;
 }
 
 .flodesk-shell .fd-form-group {
@@ -119,11 +134,11 @@ textarea {
 }
 
 .flodesk-shell .fd-form-control {
-  min-height: 3.25rem !important;
+  min-height: 3rem !important;
   border: 1px solid rgba(27, 24, 19, 0.14) !important;
   border-radius: 0.75rem !important;
   background: rgba(255, 255, 255, 0.9) !important;
-  padding: 0.9rem 1rem !important;
+  padding: 0.78rem 0.9rem !important;
   color: var(--ink) !important;
   font: inherit !important;
 }
@@ -142,11 +157,11 @@ textarea {
 }
 
 .flodesk-shell [data-ff-el="footer"] {
-  margin-top: 1.25rem !important;
+  margin-top: 0.9rem !important;
 }
 
 .flodesk-shell [data-ff-el="submit"] {
-  min-height: 3.25rem !important;
+  min-height: 3.1rem !important;
   width: 100% !important;
   border: 0 !important;
   border-radius: 999px !important;
@@ -170,6 +185,15 @@ textarea {
 }
 
 @media (max-width: 640px) {
+  .contact-form-section {
+    padding-top: 48px;
+    padding-bottom: 56px;
+  }
+
+  .flodesk-shell [data-ff-el="form"] {
+    padding: 0 !important;
+  }
+
   .flodesk-shell [data-ff-el="fields"] {
     grid-template-columns: 1fr;
   }
