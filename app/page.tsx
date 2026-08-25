@@ -11,11 +11,11 @@ import { brand, features, posts, services, stats, testimonials } from "@/lib/dat
 export default function HomePage() {
   return (
     <>
-      <section className="relative overflow-hidden border-b border-ink/10">
+      <section className="hero-gradient relative overflow-hidden border-b border-primary/10">
         <div className="absolute inset-0 ai-grid opacity-60" />
         <div className="container relative grid min-h-[calc(100vh-80px)] items-center gap-12 py-16 lg:grid-cols-[1.05fr_0.95fr]">
           <Reveal>
-            <p className="mb-5 inline-flex rounded-full border border-gold/25 bg-white/60 px-4 py-2 text-sm font-bold text-gold">
+            <p className="mb-5 inline-flex rounded-full border border-highlight/60 bg-highlight/20 px-4 py-2 text-sm font-bold text-ink">
               {brand.role}
             </p>
             <h1 className="font-heading text-5xl font-bold leading-[1.03] text-ink sm:text-6xl lg:text-7xl">

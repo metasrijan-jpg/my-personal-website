@@ -3,9 +3,9 @@ import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "reac
 import { cn } from "@/lib/utils";
 
 const variants = {
-  primary: "bg-ink text-white shadow-soft hover:-translate-y-0.5 hover:bg-[#0f0e0b]",
-  secondary: "border border-ink/15 bg-white/78 text-ink hover:-translate-y-0.5 hover:border-gold/60 hover:bg-white",
-  gold: "bg-gold text-white shadow-soft hover:-translate-y-0.5 hover:bg-[#97703d]"
+  primary: "bg-primary text-white shadow-soft hover:-translate-y-0.5 hover:bg-blue-700",
+  secondary: "border border-primary/20 bg-white/80 text-ink hover:-translate-y-0.5 hover:border-secondary/60 hover:bg-white hover:text-secondary",
+  gold: "bg-accent text-white shadow-soft hover:-translate-y-0.5 hover:bg-orange-600"
 };
 
 type BaseProps = {
@@ -21,7 +21,7 @@ export function Button({ children, variant = "primary", className, ...props }: B
   return (
     <button
       className={cn(
-        "focus-ring relative inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-full px-6 text-sm font-semibold transition",
+        "group focus-ring relative inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-full px-6 text-sm font-semibold transition",
         variants[variant],
         className
       )}
