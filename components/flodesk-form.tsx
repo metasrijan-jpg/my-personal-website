@@ -57,7 +57,7 @@ export function FlodeskForm() {
       if (cancelled || !rootRef.current) return;
       rootRef.current.innerHTML = html;
       const config = rootRef.current.querySelector<HTMLElement>("[data-ff-config]");
-      if (config) config.dataset.ffConfig = btoa(JSON.stringify({ trigger: { mode: "immediately", value: 0 }, onSuccess: { mode: "message", message: "", redirectUrl: "" }, coi: false, showForReturnVisitors: true, notification: false, gdpr: { acceptsMarketing: false, privacyPolicy: { enabled: false, mandatory: false } }, trackingConfig: { metaPixelId: "", cookieBannerEnabled: false, googleAnalyticsId: "" } }));
+      if (config) config.dataset.ffConfig = btoa(JSON.stringify({ trigger: { mode: "immediately", value: 0 }, onSuccess: { mode: "redirect", message: "", redirectUrl: "/thankyou" }, coi: false, showForReturnVisitors: true, notification: false, gdpr: { acceptsMarketing: false, privacyPolicy: { enabled: false, mandatory: false } }, trackingConfig: { metaPixelId: "", cookieBannerEnabled: false, googleAnalyticsId: "" } }));
       Array.from(rootRef.current.querySelectorAll("script")).forEach((script) => { const replacement = document.createElement("script"); Array.from(script.attributes).forEach((attribute) => replacement.setAttribute(attribute.name, attribute.value)); replacement.textContent = script.textContent; script.replaceWith(replacement); });
       const form = rootRef.current.querySelector("form");
       if (!form) return;
