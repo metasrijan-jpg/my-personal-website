@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Check, Mail, MessageCircle, Phone, Play, Sparkles } from "lucide-react";
+import { ArrowRight, Check, Mail, MessageCircle, Phone, Sparkles } from "lucide-react";
 import { brand } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -11,7 +11,10 @@ export const metadata: Metadata = {
 
 const whatsappLink = `https://wa.me/${brand.phone.replace(/\D/g, "")}?text=${encodeURIComponent("Hello, I just submitted an inquiry through your website.")}`;
 const phoneLink = `tel:${brand.phone.replace(/\s/g, "")}`;
-const VIDEO_URL = "";
+const thankYouVideos = [
+  { title: "Welcome and what happens next", src: "/videos/welcome.mp4" },
+  { title: "How to prepare for our conversation", src: "/videos/next-steps.mp4" }
+];
 const verifiedSocials = brand.socials.filter((social) => social.href !== "#" && !social.href.startsWith("mailto:"));
 
 const nextSteps = [
@@ -36,15 +39,9 @@ export default function ThankYouPage() {
                 <div className="mt-9 flex flex-wrap justify-center gap-3 lg:justify-start"><Link href="/" className="inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 font-semibold text-ink transition hover:bg-white">Back to home <ArrowRight size={18} /></Link><a href={whatsappLink} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 font-semibold text-white transition hover:border-gold hover:text-gold">Chat on WhatsApp <MessageCircle size={18} /></a></div>
               </div>
               <div className="overflow-hidden rounded-[20px] bg-black/30 shadow-soft">
-                <p className="px-5 pt-5 text-sm font-bold uppercase tracking-[0.18em] text-gold">Watch this before we talk</p>
-                <div className="mt-4 aspect-video">
-                  {VIDEO_URL ? (
-                    <iframe className="size-full" src={VIDEO_URL} title="Welcome video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
-                  ) : (
-                    <div className="grid size-full place-items-center p-8 text-center">
-                      <div><div className="mx-auto grid size-16 place-items-center rounded-full border border-gold/60 text-gold"><Play size={26} fill="currentColor" /></div><p className="mt-4 font-semibold">Your welcome video will appear here</p><p className="mt-2 text-sm text-white/60">Add your YouTube embed URL to VIDEO_URL in this page when ready.</p></div>
-                    </div>
-                  )}
+                <p className="px-5 pt-5 text-sm font-bold uppercase tracking-[0.18em] text-gold">Watch these before we talk</p>
+                <div className="mt-4 grid gap-5 p-4 sm:p-5">
+                  {thankYouVideos.map((video) => <div key={video.src} className="overflow-hidden rounded-2xl bg-black/30"><p className="px-4 py-3 font-semibold">{video.title}</p><video className="aspect-video w-full bg-black" controls preload="metadata" playsInline><source src={video.src} type="video/mp4" />Your browser does not support embedded video.</video></div>)}
                 </div>
                 <div className="border-t border-white/10 p-5 sm:p-6">
                   <p className="text-sm font-bold uppercase tracking-[0.18em] text-gold">Need to talk sooner?</p>
