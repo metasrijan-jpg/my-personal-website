@@ -12,8 +12,6 @@ export const metadata: Metadata = {
 const whatsappLink = `https://wa.me/${brand.phone.replace(/\D/g, "")}?text=${encodeURIComponent("Hello, I just submitted an inquiry through your website.")}`;
 const phoneLink = `tel:${brand.phone.replace(/\s/g, "")}`;
 const thankYouVideos = [
-  { title: "Welcome and what happens next", src: "/videos/welcome.mp4", kind: "file" },
-  { title: "How to prepare for our conversation", src: "/videos/next-steps.mp4", kind: "file" },
   { title: "A quick welcome from MetaSrijan", src: "https://www.youtube.com/embed/CZ6zDEdlRQY", kind: "youtube" }
 ];
 const verifiedSocials = brand.socials.filter((social) => social.href !== "#" && !social.href.startsWith("mailto:"));
