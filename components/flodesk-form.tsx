@@ -13,11 +13,12 @@ export function FlodeskForm() {
     let cancelled = false;
     let cleanupInjectedForm = () => {};
     async function loadForm() {
-      const response = await fetch("/flodesk-form.html");
+      const response = await fetch("/flodesk-form.html", { cache: "no-store" });
       if (!response.ok) throw new Error("Unable to load form");
       const html = await response.text();
       if (cancelled || !rootRef.current) return;
       rootRef.current.innerHTML = html;
+      rootRef.current.querySelectorAll<HTMLElement>('input:not([type="hidden"]), button[type="submit"]').forEach((control) => { control.tabIndex = 0; });
       const config = rootRef.current.querySelector<HTMLElement>("[data-ff-config]");
       if (config) config.dataset.ffConfig = btoa(JSON.stringify({ trigger: { mode: "immediately", value: 0 }, onSuccess: { mode: "redirect", url: "/thank-you" }, coi: false, showForReturnVisitors: true, notification: false, gdpr: { acceptsMarketing: false, privacyPolicy: { enabled: false, mandatory: false } }, trackingConfig: { metaPixelId: "", cookieBannerEnabled: false, googleAnalyticsId: "" } }));
       Array.from(rootRef.current.querySelectorAll("script")).forEach((script) => { const replacement = document.createElement("script"); Array.from(script.attributes).forEach((attribute) => replacement.setAttribute(attribute.name, attribute.value)); replacement.textContent = script.textContent; script.replaceWith(replacement); });
