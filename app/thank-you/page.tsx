@@ -12,8 +12,9 @@ export const metadata: Metadata = {
 const whatsappLink = `https://wa.me/${brand.phone.replace(/\D/g, "")}?text=${encodeURIComponent("Hello, I just submitted an inquiry through your website.")}`;
 const phoneLink = `tel:${brand.phone.replace(/\s/g, "")}`;
 const thankYouVideos = [
-  { title: "Welcome and what happens next", src: "/videos/welcome.mp4" },
-  { title: "How to prepare for our conversation", src: "/videos/next-steps.mp4" }
+  { title: "Welcome and what happens next", src: "/videos/welcome.mp4", kind: "file" },
+  { title: "How to prepare for our conversation", src: "/videos/next-steps.mp4", kind: "file" },
+  { title: "A quick welcome from MetaSrijan", src: "https://www.youtube.com/embed/CZ6zDEdlRQY", kind: "youtube" }
 ];
 const verifiedSocials = brand.socials.filter((social) => social.href !== "#" && !social.href.startsWith("mailto:"));
 
@@ -41,7 +42,7 @@ export default function ThankYouPage() {
               <div className="overflow-hidden rounded-[20px] bg-black/30 shadow-soft">
                 <p className="px-5 pt-5 text-sm font-bold uppercase tracking-[0.18em] text-gold">Watch these before we talk</p>
                 <div className="mt-4 grid gap-5 p-4 sm:p-5">
-                  {thankYouVideos.map((video) => <div key={video.src} className="overflow-hidden rounded-2xl bg-black/30"><p className="px-4 py-3 font-semibold">{video.title}</p><video className="aspect-video w-full bg-black" controls preload="metadata" playsInline><source src={video.src} type="video/mp4" />Your browser does not support embedded video.</video></div>)}
+                  {thankYouVideos.map((video) => <div key={video.src} className="overflow-hidden rounded-2xl bg-black/30"><p className="px-4 py-3 font-semibold">{video.title}</p>{video.kind === "youtube" ? <iframe className="aspect-video w-full bg-black" src={video.src} title={video.title} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen /> : <video className="aspect-video w-full bg-black" controls preload="metadata" playsInline><source src={video.src} type="video/mp4" />Your browser does not support embedded video.</video>}</div>)}
                 </div>
                 <div className="border-t border-white/10 p-5 sm:p-6">
                   <p className="text-sm font-bold uppercase tracking-[0.18em] text-gold">Need to talk sooner?</p>
