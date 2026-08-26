@@ -13,14 +13,17 @@ const thankYouVideos = [
   { title: "How to prepare for our conversation", src: "/videos/next-steps.mp4" }
 ];
 
-function ThankYouContent() {
+function ThankYouContent({ onReturnToForm }: { onReturnToForm: () => void }) {
   return (
     <section className="rounded-[24px] bg-ink p-6 text-white shadow-soft sm:p-10" aria-labelledby="thank-you-title">
       <div className="mx-auto max-w-3xl text-center">
         <p className="text-sm font-bold uppercase tracking-[0.22em] text-gold">Submission confirmed</p>
         <h2 id="thank-you-title" className="mt-4 font-heading text-3xl font-bold sm:text-5xl">Thank you — your form was received.</h2>
         <p className="mx-auto mt-4 max-w-2xl text-lg leading-8 text-white/70">Your information has been submitted successfully. I&apos;ll review it and get in touch using the details you provided.</p>
-        <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="focus-ring mt-7 inline-flex min-h-12 items-center gap-2 rounded-full bg-[#1f7a4d] px-6 py-3 font-semibold text-white transition hover:bg-[#17633d]"><MessageCircle size={19} aria-hidden="true" /> Contact us on WhatsApp</a>
+        <div className="mt-7 flex flex-wrap justify-center gap-3">
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="focus-ring inline-flex min-h-12 items-center gap-2 rounded-full bg-[#1f7a4d] px-6 py-3 font-semibold text-white transition hover:bg-[#17633d]"><MessageCircle size={19} aria-hidden="true" /> Contact us on WhatsApp</a>
+          <button type="button" onClick={onReturnToForm} className="focus-ring inline-flex min-h-12 items-center gap-2 rounded-full border border-white/20 px-6 py-3 font-semibold text-white transition hover:border-gold hover:text-gold">Return to booking form</button>
+        </div>
       </div>
       <div className="mt-10 border-t border-white/10 pt-8" aria-labelledby="videos-title">
         <div className="flex items-center gap-3"><Video className="text-gold" size={23} aria-hidden="true" /><h3 id="videos-title" className="font-heading text-2xl font-bold">Watch the required videos</h3></div>
@@ -36,10 +39,14 @@ function ThankYouContent() {
 export function FlodeskForm() {
   const rootRef = useRef<HTMLDivElement>(null);
   const submittingRef = useRef(false);
+  const submissionStartedRef = useRef(false);
+  const submittedRef = useRef(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
+    if (submitted) return;
+
     let cancelled = false;
     let cleanupInjectedForm = () => {};
     async function loadForm() {
@@ -58,10 +65,27 @@ export function FlodeskForm() {
         const stage = rootRef.current?.querySelector<HTMLElement>('[data-ff-el="root"]')?.dataset.ffStage;
         const hasSuccess = stage === "success" || form.classList.contains("fd-has-success");
         const hasError = stage === "error" || form.classList.contains("fd-has-error");
-        if (hasSuccess) { submittingRef.current = false; setError(""); setSubmitted(true); }
-        else if (hasError) { submittingRef.current = false; if (submitButton) { submitButton.disabled = false; submitButton.removeAttribute("aria-busy"); } setError("We couldn’t submit your form. Please check your details and try again."); }
+        // The success view is owned by this component and has no timer, close
+        // action, redirect, or dependency on the injected form's DOM.
+        if (hasSuccess && submissionStartedRef.current && !submittedRef.current) {
+          submittedRef.current = true;
+          submittingRef.current = false;
+          setError("");
+          setSubmitted(true);
+        } else if (hasError && !submittedRef.current) {
+          submittingRef.current = false;
+          submissionStartedRef.current = false;
+          if (submitButton) { submitButton.disabled = false; submitButton.removeAttribute("aria-busy"); }
+          setError("We couldn’t submit your form. Please check your details and try again.");
+        }
       };
-      const onSubmit = (event: Event) => { if (submittingRef.current) { event.preventDefault(); return; } submittingRef.current = true; setError(""); if (submitButton) { submitButton.disabled = true; submitButton.setAttribute("aria-busy", "true"); } };
+      const onSubmit = (event: Event) => {
+        if (submittingRef.current || submittedRef.current) { event.preventDefault(); return; }
+        submittingRef.current = true;
+        submissionStartedRef.current = true;
+        setError("");
+        if (submitButton) { submitButton.disabled = true; submitButton.setAttribute("aria-busy", "true"); }
+      };
       form.addEventListener("submit", onSubmit);
       const observer = new MutationObserver(syncState);
       observer.observe(rootRef.current, { attributes: true, attributeFilter: ["class", "data-ff-stage"], subtree: true });
@@ -70,8 +94,15 @@ export function FlodeskForm() {
     }
     loadForm().catch(() => { if (rootRef.current) rootRef.current.textContent = "Unable to load the form. Please refresh and try again."; });
     return () => { cancelled = true; cleanupInjectedForm(); };
-  }, []);
+  }, [submitted]);
 
-  if (submitted) return <ThankYouContent />;
+  if (submitted) {
+    return <ThankYouContent onReturnToForm={() => {
+      submittedRef.current = false;
+      submissionStartedRef.current = false;
+      submittingRef.current = false;
+      setSubmitted(false);
+    }} />;
+  }
   return <div aria-live="polite">{error && <p role="alert" className="mb-4 rounded-xl bg-red-50 p-4 text-sm font-semibold text-red-700">{error}</p>}<div ref={rootRef} className="flodesk-shell w-full overflow-hidden" /></div>;
 }
