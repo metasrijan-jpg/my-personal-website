@@ -80,17 +80,20 @@ export function FlodeskForm() {
         }
       };
       const onSubmit = (event: Event) => {
-        if (submittingRef.current || submittedRef.current) { event.preventDefault(); return; }
+        // Keep the browser from performing a native form navigation/reload.
+        // Flodesk still receives the event and completes the async submission.
+        event.preventDefault();
+        if (submittingRef.current || submittedRef.current) return;
         submittingRef.current = true;
         submissionStartedRef.current = true;
         setError("");
         if (submitButton) { submitButton.disabled = true; submitButton.setAttribute("aria-busy", "true"); }
       };
-      form.addEventListener("submit", onSubmit);
+      form.addEventListener("submit", onSubmit, true);
       const observer = new MutationObserver(syncState);
       observer.observe(rootRef.current, { attributes: true, attributeFilter: ["class", "data-ff-stage"], subtree: true });
       syncState();
-      cleanupInjectedForm = () => { form.removeEventListener("submit", onSubmit); observer.disconnect(); };
+      cleanupInjectedForm = () => { form.removeEventListener("submit", onSubmit, true); observer.disconnect(); };
     }
     loadForm().catch(() => { if (rootRef.current) rootRef.current.textContent = "Unable to load the form. Please refresh and try again."; });
     return () => { cancelled = true; cleanupInjectedForm(); };
