@@ -190,6 +190,11 @@ textarea {
   transform: translateY(-1px);
 }
 
+.flodesk-shell [data-ff-el="submit"]:focus-visible {
+  outline: 3px solid rgba(249, 115, 22, 0.55) !important;
+  outline-offset: 3px;
+}
+
 .hero-gradient {
   background:
     radial-gradient(circle at 12% 18%, rgba(124, 58, 237, 0.22), transparent 26rem),

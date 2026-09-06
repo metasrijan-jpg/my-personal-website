@@ -25,12 +25,21 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: brand.name,
     locale: "en_US",
-    type: "website"
+    type: "website",
+    images: [
+      {
+        url: "/images/srijan-gharti.png",
+        width: 720,
+        height: 720,
+        alt: "Srijan Gharti - MetaSrijan AI marketing consultant"
+      }
+    ]
   },
   twitter: {
     card: "summary_large_image",
     title: `${brand.name} | AI Marketing Portfolio`,
-    description: "Premium AI-powered digital marketing consulting."
+    description: "Premium AI-powered digital marketing consulting.",
+    images: ["/images/srijan-gharti.png"]
   }
 };
 

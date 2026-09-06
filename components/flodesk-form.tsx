@@ -7,6 +7,7 @@ export function FlodeskForm() {
   const submittingRef = useRef(false);
   const submissionStartedRef = useRef(false);
   const redirectedRef = useRef(false);
+  const redirectTimerRef = useRef<number | null>(null);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -20,7 +21,17 @@ export function FlodeskForm() {
       rootRef.current.innerHTML = html;
       rootRef.current.querySelectorAll<HTMLElement>('input:not([type="hidden"]), button[type="submit"]').forEach((control) => { control.tabIndex = 0; });
       const config = rootRef.current.querySelector<HTMLElement>("[data-ff-config]");
-      if (config) config.dataset.ffConfig = btoa(JSON.stringify({ trigger: { mode: "immediately", value: 0 }, onSuccess: { mode: "redirect", url: "/thank-you" }, coi: false, showForReturnVisitors: true, notification: false, gdpr: { acceptsMarketing: false, privacyPolicy: { enabled: false, mandatory: false } }, trackingConfig: { metaPixelId: "", cookieBannerEnabled: false, googleAnalyticsId: "" } }));
+      if (config?.dataset.ffConfig) {
+        try {
+          const decoded = JSON.parse(atob(config.dataset.ffConfig));
+          if (decoded.onSuccess?.mode === "redirect") {
+            decoded.onSuccess.redirectUrl = "/thanks";
+            config.dataset.ffConfig = btoa(JSON.stringify(decoded));
+          }
+        } catch {
+          // Leave Flodesk's original config untouched if it cannot be decoded.
+        }
+      }
       Array.from(rootRef.current.querySelectorAll("script")).forEach((script) => { const replacement = document.createElement("script"); Array.from(script.attributes).forEach((attribute) => replacement.setAttribute(attribute.name, attribute.value)); replacement.textContent = script.textContent; script.replaceWith(replacement); });
       const form = rootRef.current.querySelector("form");
       if (!form) return;
@@ -33,7 +44,7 @@ export function FlodeskForm() {
           redirectedRef.current = true;
           submittingRef.current = false;
           setError("");
-          window.location.assign("/thank-you");
+          redirectTimerRef.current = window.setTimeout(() => window.location.assign("/thanks"), 1200);
         } else if (hasError && !redirectedRef.current) {
           submittingRef.current = false;
           submissionStartedRef.current = false;
@@ -58,7 +69,11 @@ export function FlodeskForm() {
       cleanupInjectedForm = () => { form.removeEventListener("submit", onSubmit, true); observer.disconnect(); };
     }
     loadForm().catch(() => { if (rootRef.current) rootRef.current.textContent = "Unable to load the form. Please refresh and try again."; });
-    return () => { cancelled = true; cleanupInjectedForm(); };
+    return () => {
+      cancelled = true;
+      cleanupInjectedForm();
+      if (redirectTimerRef.current) window.clearTimeout(redirectTimerRef.current);
+    };
   }, []);
 
   return <div aria-live="polite">{error && <p role="alert" className="mb-4 rounded-xl bg-red-50 p-4 text-sm font-semibold text-red-700">{error}</p>}<div ref={rootRef} className="flodesk-shell w-full overflow-hidden" /></div>;
